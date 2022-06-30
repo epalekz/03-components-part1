@@ -5,11 +5,13 @@ import Header from "./components/Header";
 import SearchOptions from "./components/SearchOptions";
 import MoviesList from "./components/MoviesList";
 import Footer from "./components/Footer";
-import BasicModal from "./components/BasicModal";
+import AddMovieModal from "./components/AddMovieModal";
+import EditMovieModal from "./components/EditMovieModal";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CongratulationsModal from "./components/CongratulationsModal";
 import LoginModal from "./components/LoginModal";
 import ErrorBoundary from "./components/ErrorBoundary";
+import DeleteMovieModal from "./components/DeleteMovieModal";
 
 const darkTheme = createTheme({
   palette: {
@@ -28,9 +30,11 @@ export default function App() {
             <MoviesList />
           </ErrorBoundary>
           <Footer />
-          <BasicModal />
+          <AddMovieModal />
+          <EditMovieModal />
           <CongratulationsModal />
           <LoginModal />
+          <DeleteMovieModal />
         </Box>
       </Container>
     </ThemeProvider>

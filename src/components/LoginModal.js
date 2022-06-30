@@ -4,25 +4,8 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
-import Autocomplete from "@mui/material/Autocomplete";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-
-const selectData = {
-  genre: ["Crime", "Documentary", "Horror", "Comedy"],
-};
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 export default function LoginModal() {
   const [open, setOpen] = React.useState(false);
@@ -37,6 +20,11 @@ export default function LoginModal() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
         <Card id="basic-info" sx={{ overflow: "visible" }}>
           <Box p={3}>
@@ -45,13 +33,14 @@ export default function LoginModal() {
           <Box component="form" pb={3} px={3}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={12}>
-                <TextField label="USER ID" placeholder="USER ID" />
+                <TextField label="USER ID" placeholder="USER ID" fullWidth />
               </Grid>
               <Grid item xs={12} sm={12}>
                 <TextField
                   label="PASSWORD*"
                   placeholder="PASSWORD*"
                   type="password"
+                  fullWidth
                 />
               </Grid>
               <Grid item xs={12}>

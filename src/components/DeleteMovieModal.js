@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import Grid from "@mui/material/Grid";
 
 const style = {
   position: "absolute",
@@ -14,18 +15,18 @@ const style = {
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
-  width: "40%",
-  height: "40%",
+  width: "30%",
+  height: "20%",
 };
 
-export default function CongratulationsModal() {
+export default function DeleteMovieModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open Congratulations modal</Button>
+      <Button onClick={handleOpen}>Open Delete Movie Modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -39,11 +40,30 @@ export default function CongratulationsModal() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            CONGRATULATIONS!
+            DELETE MOVIE
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            The movie has been added to database successfully
+            Are you sure you want to delete this movie?
           </Typography>
+          <Grid
+            container
+            spacing={3}
+            style={{
+              paddingTop: "20px",
+              paddingLeft: "250px",
+            }}
+          >
+            <Grid item xs={12} sm={12}>
+              <Button
+                variant="contained"
+                color="error"
+                href="#contained-buttons"
+                align="rigth"
+              >
+                CONFIRM
+              </Button>
+            </Grid>
+          </Grid>
         </Box>
       </Modal>
     </div>
