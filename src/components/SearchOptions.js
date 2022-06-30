@@ -5,8 +5,9 @@ import Typography from "@mui/material/Typography";
 import BasicSelect from "./BasicSelect";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import { PropTypes } from "prop-types";
 
-const SearchOptions = () => {
+const SearchOptions = ({ handleSorted }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -31,7 +32,7 @@ const SearchOptions = () => {
         </Grid>
         <Grid item xs={3} />
         <Grid item xs={3}>
-          <BasicSelect />
+          <BasicSelect handleSorted={handleSorted} />
         </Grid>
       </Grid>
       <Grid container spacing={2}>
@@ -46,3 +47,7 @@ const SearchOptions = () => {
 };
 
 export default SearchOptions;
+
+SearchOptions.propTypes = {
+  handleSorted: PropTypes.func.isRequired,
+};

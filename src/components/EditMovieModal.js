@@ -7,22 +7,20 @@ import Grid from "@mui/material/Grid";
 import Autocomplete from "@mui/material/Autocomplete";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import PropTypes from "prop-types";
 
 const selectData = {
   genre: ["Crime", "Documentary", "Horror", "Comedy"],
 };
 
-export default function EditMovieModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+export default function EditMovieModal({ openEdit, handleCloseEdit, movie }) {
+  const { title, description, image } = movie;
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open Edit Movie modal</Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={openEdit}
+        onClose={handleCloseEdit}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         style={{
@@ -41,7 +39,12 @@ export default function EditMovieModal() {
           <Box component="form" pb={3} px={3}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={8}>
-                <TextField label="Title" placeholder="Title" fullWidth />
+                <TextField
+                  label="Title"
+                  placeholder="Title"
+                  fullWidth
+                  value={title}
+                />
               </Grid>
               <Grid item xs={12} sm={4}>
                 <TextField
@@ -55,6 +58,7 @@ export default function EditMovieModal() {
                   label="Movie URL"
                   placeholder="Movie URL"
                   fullWidth
+                  value={image}
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -82,8 +86,8 @@ export default function EditMovieModal() {
                   label="Overview"
                   multiline
                   rows={4}
-                  defaultValue="Movie description"
                   fullWidth
+                  value={description}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -122,3 +126,18 @@ export default function EditMovieModal() {
     </div>
   );
 }
+
+EditMovieModal.defaultProps = {
+  movie: {
+    title: "some movie",
+    description: "some description",
+    director: "some director",
+    image: "",
+  },
+};
+
+EditMovieModal.propTypes = {
+  openEdit: PropTypes.bool.isRequired,
+  handleCloseEdit: PropTypes.func.isRequired,
+  movie: PropTypes.object,
+};

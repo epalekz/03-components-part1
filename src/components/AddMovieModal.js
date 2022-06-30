@@ -7,19 +7,15 @@ import Grid from "@mui/material/Grid";
 import Autocomplete from "@mui/material/Autocomplete";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import PropTypes from "prop-types";
 
 const selectData = {
   genre: ["Crime", "Documentary", "Horror", "Comedy"],
 };
 
-export default function AddMovieModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+export default function AddMovieModal({ open, handleClose }) {
   return (
     <div>
-      <Button onClick={handleOpen}>Open Add Movie modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -122,3 +118,8 @@ export default function AddMovieModal() {
     </div>
   );
 }
+
+AddMovieModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+};

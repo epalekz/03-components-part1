@@ -4,12 +4,14 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { PropTypes } from "prop-types";
 
-export default function BasicSelect() {
-  const [age, setAge] = React.useState("");
+export default function BasicSelect({ handleSorted }) {
+  const [age, setAge] = React.useState("title");
 
   const handleChange = (event) => {
     setAge(event.target.value);
+    handleSorted(event.target.value);
   };
 
   return (
@@ -20,14 +22,18 @@ export default function BasicSelect() {
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={age}
-          label="Age"
+          label="order"
           onChange={handleChange}
         >
-          <MenuItem value={10}>RELEASE DATE</MenuItem>
-          <MenuItem value={20}>option 2</MenuItem>
-          <MenuItem value={30}>option 3</MenuItem>
+          <MenuItem value="title">TITLE</MenuItem>
+          <MenuItem value="director">DIRECTOR</MenuItem>
+          <MenuItem value="description">DESCRIPTION</MenuItem>
         </Select>
       </FormControl>
     </Box>
   );
 }
+
+BasicSelect.propTypes = {
+  handleSorted: PropTypes.func.isRequired,
+};
