@@ -139,7 +139,10 @@ export default function App() {
       <Container fixed>
         <Box sx={{ my: 4 }}>
           <Header handleOpen={handleOpen} />
-          <SearchOptions handleSorted={handleSorted} />
+          <SearchOptions
+            handleSorted={handleSorted}
+            moviesLength={moviesSorted.length}
+          />
           <ErrorBoundary>
             <MoviesList handleOpenEdit={handleOpenEdit} movies={moviesSorted} />
           </ErrorBoundary>

@@ -25,7 +25,6 @@ export default function CongratulationsModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open Congratulations modal</Button>
       <Modal
         open={open}
         onClose={handleClose}

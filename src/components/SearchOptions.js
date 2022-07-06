@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { PropTypes } from "prop-types";
 
-const SearchOptions = ({ handleSorted }) => {
+const SearchOptions = ({ handleSorted, moviesLength }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -38,7 +38,7 @@ const SearchOptions = ({ handleSorted }) => {
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <Typography variant="h5" component="h5" gutterBottom paddingLeft={1}>
-            39 movies found
+            {`${moviesLength} movies found`}
           </Typography>
         </Grid>
       </Grid>

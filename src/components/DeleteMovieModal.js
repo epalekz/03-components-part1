@@ -26,7 +26,6 @@ export default function DeleteMovieModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open Delete Movie Modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
