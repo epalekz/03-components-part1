@@ -1,31 +1,27 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function BasicSelect() {
-  const [age, setAge] = React.useState("");
+const categories = ["title", "director", "description"];
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+export default function BasicSelect() {
+  const [category, setCategory] = useState("title");
+
+  const handleChange = (e) => {
+    setCategory(e.target.value);
   };
 
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">SORT BY</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Age"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>RELEASE DATE</MenuItem>
-          <MenuItem value={20}>option 2</MenuItem>
-          <MenuItem value={30}>option 3</MenuItem>
+        <InputLabel>SORT BY</InputLabel>
+        <Select value={category} label="order" onChange={handleChange}>
+          {categories.map((category) => (
+            <MenuItem value={category}>{category.toUpperCase()}</MenuItem>
+          ))}
         </Select>
       </FormControl>
     </Box>

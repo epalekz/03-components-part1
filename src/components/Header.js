@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 
 import TextField from "@mui/material/TextField";
 
-export default function BasicGrid({ open, setOpen }) {
+export default function Header({ open, setOpen }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -81,42 +81,3 @@ export default function BasicGrid({ open, setOpen }) {
     </Box>
   );
 }
-
-// import React from "react";
-
-// const Header = () => {
-//   return (
-//     <div class="container">
-//       <Columns>
-//         <Columns.Column size={3}>
-//           <div class="block">
-//             <strong>netflix</strong>roulette
-//           </div>
-//         </Columns.Column>
-//         <Columns.Column size={6} />
-//         <Columns.Column size={3}>
-//           <a className="button is-light">+ADD MOVIE</a>
-//         </Columns.Column>
-//       </Columns>
-//       <Columns>
-//         <Columns.Column size={6} offset={1}>
-//           <h2 class="title is-2">FIND YOUR MOVIE</h2>
-//         </Columns.Column>
-//       </Columns>
-//       <Columns>
-//         <Columns.Column size={8} offset={1}>
-//           <input
-//             className="input is-medium"
-//             type="text"
-//             placeholder="What do you want to watch?"
-//           />
-//         </Columns.Column>
-//         <Columns.Column size={2}>
-//           <button className="button is-danger is-medium">Search</button>
-//         </Columns.Column>
-//       </Columns>
-//     </div>
-//   );
-// };
-
-// export default Header;

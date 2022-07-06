@@ -6,7 +6,7 @@ import BasicSelect from "./BasicSelect";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
-const SearchOptions = () => {
+const SearchOptions = ({ moviesLength }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -37,7 +37,7 @@ const SearchOptions = () => {
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <Typography variant="h5" component="h5" gutterBottom paddingLeft={1}>
-            39 movies found
+            {`${moviesLength} movies found`}
           </Typography>
         </Grid>
       </Grid>

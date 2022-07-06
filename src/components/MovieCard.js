@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
 export default function MovieCard({ movie }) {
-  const { title, description, director, image } = movie;
+  const { title, description, director, image } = movie || {};
 
   return (
     <Card sx={{ maxWidth: 345 }}>

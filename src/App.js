@@ -23,7 +23,7 @@ export default function App() {
       <Container fixed>
         <Box sx={{ my: 4 }}>
           <Header />
-          <SearchOptions />
+          <SearchOptions moviesLength={8} />
           <ErrorBoundary>
             <MoviesList />
           </ErrorBoundary>
