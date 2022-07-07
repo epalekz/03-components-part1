@@ -8,15 +8,28 @@ import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
-export default function MovieCard({ movie, handleOpenEdit }) {
+export default function MovieCard({
+  movie,
+  handleOpenEdit,
+  setShowMovieDetail,
+  setMovieSelected,
+}) {
   const { title, description, director, image } = movie || {};
 
   const handleEdit = () => {
     handleOpenEdit(movie);
   };
 
+  const handleShowMovieDetail = () => {
+    setShowMovieDetail(true);
+    setMovieSelected(movie);
+  };
+
   return (
-    <Card sx={{ maxWidth: 345, cursor: "pointer" }} onClick={handleEdit}>
+    <Card
+      sx={{ maxWidth: 345, cursor: "pointer" }}
+      onClick={handleShowMovieDetail}
+    >
       <CardHeader
         action={<IconButton aria-label="settings"></IconButton>}
         title={title}
@@ -50,4 +63,6 @@ MovieCard.propTypes = {
     image: PropTypes.string,
   }),
   handleOpenEdit: PropTypes.func.isRequired,
+  setShowMovieDetail: PropTypes.func.isRequired,
+  setMovieSelected: PropTypes.func.isRequired,
 };

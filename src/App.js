@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Header from "./components/Header";
@@ -12,6 +12,7 @@ import CongratulationsModal from "./components/CongratulationsModal";
 import LoginModal from "./components/LoginModal";
 import ErrorBoundary from "./components/ErrorBoundary";
 import DeleteMovieModal from "./components/DeleteMovieModal";
+import MovieDetails from "./components/MovieDetails";
 
 const darkTheme = createTheme({
   palette: {
@@ -103,19 +104,20 @@ const movies = [
 ];
 
 export default function App() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [showMovieDetail, setShowMovieDetail] = useState(false);
 
-  const [openEdit, setOpenEdit] = React.useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
   const handleOpenEdit = (movie) => {
     setMovieSelected(movie);
     setOpenEdit(true);
   };
   const handleCloseEdit = () => setOpenEdit(false);
 
-  const [movieSelected, setMovieSelected] = React.useState({});
-  const [moviesSorted, setMoviesSorted] = React.useState([...movies]);
+  const [movieSelected, setMovieSelected] = useState({});
+  const [moviesSorted, setMoviesSorted] = useState([...movies]);
 
   const handleSorted = (field) => {
     let moviesS = [];
@@ -138,13 +140,33 @@ export default function App() {
     <ThemeProvider theme={darkTheme}>
       <Container fixed>
         <Box sx={{ my: 4 }}>
-          <Header handleOpen={handleOpen} />
-          <SearchOptions
-            handleSorted={handleSorted}
-            moviesLength={moviesSorted.length}
-          />
+          {!showMovieDetail ? (
+            <>
+              <Header handleOpen={handleOpen} />
+              <SearchOptions
+                handleSorted={handleSorted}
+                moviesLength={moviesSorted.length}
+              />
+            </>
+          ) : (
+            <>
+              <MovieDetails
+                movie={movieSelected}
+                setShowMovieDetail={setShowMovieDetail}
+              />
+              <SearchOptions
+                handleSorted={handleSorted}
+                moviesLength={moviesSorted.length}
+              />
+            </>
+          )}
           <ErrorBoundary>
-            <MoviesList handleOpenEdit={handleOpenEdit} movies={moviesSorted} />
+            <MoviesList
+              handleOpenEdit={handleOpenEdit}
+              setMovieSelected={setMovieSelected}
+              movies={moviesSorted}
+              setShowMovieDetail={setShowMovieDetail}
+            />
           </ErrorBoundary>
           <Footer />
           <AddMovieModal open={open} handleClose={handleClose} />
