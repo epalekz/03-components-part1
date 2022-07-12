@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Header from "./components/Header";
+import SearchOptions from "./components/SearchOptions";
+import MoviesList from "./components/MoviesList";
+import Footer from "./components/Footer";
+import BasicModal from "./components/BasicModal";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CongratulationsModal from "./components/CongratulationsModal";
+import LoginModal from "./components/LoginModal";
+import ErrorBoundary from "./components/ErrorBoundary";
 
-function App() {
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <Container fixed>
+        <Box sx={{ my: 4 }}>
+          <Header />
+          <SearchOptions moviesLength={8} />
+          <ErrorBoundary>
+            <MoviesList />
+          </ErrorBoundary>
+          <Footer />
+          <BasicModal />
+          <CongratulationsModal />
+          <LoginModal />
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 }
-
-export default App;
