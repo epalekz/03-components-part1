@@ -110,9 +110,9 @@ export default function App() {
   const [showMovieDetail, setShowMovieDetail] = useState(false);
 
   const [openEdit, setOpenEdit] = useState(false);
-  const handleOpenEdit = (movie) => {
+  const handleOpenDetails = (movie) => {
     setMovieSelected(movie);
-    setOpenEdit(true);
+    setShowMovieDetail(true);
   };
   const handleCloseEdit = () => setOpenEdit(false);
 
@@ -140,32 +140,20 @@ export default function App() {
     <ThemeProvider theme={darkTheme}>
       <Container fixed>
         <Box sx={{ my: 4 }}>
-          {!showMovieDetail ? (
-            <>
-              <Header handleOpen={handleOpen} />
-              <SearchOptions
-                handleSorted={handleSorted}
-                moviesLength={moviesSorted.length}
-              />
-            </>
-          ) : (
-            <>
-              <MovieDetails
-                movie={movieSelected}
-                setShowMovieDetail={setShowMovieDetail}
-              />
-              <SearchOptions
-                handleSorted={handleSorted}
-                moviesLength={moviesSorted.length}
-              />
-            </>
-          )}
+          <Header handleOpen={handleOpen} showMovieDetail={showMovieDetail} />
+          <MovieDetails
+            movie={movieSelected}
+            setShowMovieDetail={setShowMovieDetail}
+            showMovieDetail={showMovieDetail}
+          />
+          <SearchOptions
+            handleSorted={handleSorted}
+            moviesLength={moviesSorted.length}
+          />
           <ErrorBoundary>
             <MoviesList
-              handleOpenEdit={handleOpenEdit}
-              setMovieSelected={setMovieSelected}
+              handleOpenDetails={handleOpenDetails}
               movies={moviesSorted}
-              setShowMovieDetail={setShowMovieDetail}
             />
           </ErrorBoundary>
           <Footer />

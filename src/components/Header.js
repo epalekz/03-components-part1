@@ -7,9 +7,9 @@ import PropTypes from "prop-types";
 
 import TextField from "@mui/material/TextField";
 
-export default function Header({ handleOpen }) {
+export default function Header({ handleOpen, showMovieDetail }) {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, display: showMovieDetail ? "none" : "" }}>
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <Typography
@@ -86,4 +86,5 @@ export default function Header({ handleOpen }) {
 
 Header.propTypes = {
   handleOpen: PropTypes.func.isRequired,
+  showMovieDetail: PropTypes.bool.isRequired,
 };

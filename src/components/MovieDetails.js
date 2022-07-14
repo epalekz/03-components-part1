@@ -3,23 +3,23 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
-import Autocomplete from "@mui/material/Autocomplete";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
 import PropTypes from "prop-types";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import IconButton from "@mui/material/IconButton";
 
-const MovieDetails = ({ movie, setShowMovieDetail }) => {
+const MovieDetails = ({ movie, setShowMovieDetail, showMovieDetail }) => {
   const { title, description, image } = movie || {};
 
   return (
     <Card
       id="movie_DETAILS"
-      sx={{ overflow: "visible", width: "100%", height: "100%" }}
+      sx={{
+        overflow: "visible",
+        width: "100%",
+        height: "100%",
+        display: showMovieDetail ? "" : "none",
+      }}
     >
       <Box p={3}>
         <Grid container spacing={2}>
@@ -99,4 +99,5 @@ MovieDetails.propTypes = {
   // handleCloseEdit: PropTypes.func.isRequired,
   movie: PropTypes.object,
   setShowMovieDetail: PropTypes.func.isRequired,
+  showMovieDetail: PropTypes.bool.isRequired,
 };
