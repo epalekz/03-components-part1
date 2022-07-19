@@ -16,7 +16,6 @@ const selectData = {
 const MovieModal = ({ open, handleClose, movie, mode }) => {
   const { title, description, image } = movie;
   const modalTitle = mode === "EDIT" ? "EDIT" : "ADD";
-
   return (
     <div>
       <Modal

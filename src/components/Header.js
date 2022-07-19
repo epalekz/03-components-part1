@@ -7,7 +7,10 @@ import PropTypes from "prop-types";
 
 import TextField from "@mui/material/TextField";
 
-export default function Header({ handleOpen }) {
+export default function Header({ handleOpen, handleOpenEdit, movie }) {
+  const handleSetMovieSelected = () => {
+    handleOpenEdit(movie, "ADD");
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -29,7 +32,7 @@ export default function Header({ handleOpen }) {
             color="error"
             href="#contained-buttons"
             align="rigth"
-            onClick={handleOpen}
+            onClick={handleSetMovieSelected}
           >
             +ADD MOVIE
           </Button>
@@ -86,4 +89,6 @@ export default function Header({ handleOpen }) {
 
 Header.propTypes = {
   handleOpen: PropTypes.func.isRequired,
+  handleOpenEdit: PropTypes.func.isRequired,
+  movie: PropTypes.object,
 };

@@ -5,8 +5,7 @@ import Header from "./components/Header";
 import SearchOptions from "./components/SearchOptions";
 import MoviesList from "./components/MoviesList";
 import Footer from "./components/Footer";
-import AddMovieModal from "./components/AddMovieModal";
-import EditMovieModal from "./components/EditMovieModal";
+import MovieModal from "./components/MovieModal";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CongratulationsModal from "./components/CongratulationsModal";
 import LoginModal from "./components/LoginModal";
@@ -105,12 +104,11 @@ const movies = [
 const categories = ["title", "director", "description"];
 
 export default function App() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [mode, setMode] = useState("");
 
-  const handleOpenEdit = (movie) => {
+  const handleOpenEdit = (movie, mode) => {
     setMovieSelected(movie);
+    setMode(mode);
   };
   const handleCloseEdit = () => setMovieSelected(undefined);
 
@@ -140,7 +138,7 @@ export default function App() {
     <ThemeProvider theme={darkTheme}>
       <Container fixed>
         <Box sx={{ my: 4 }}>
-          <Header handleOpen={handleOpen} />
+          <Header handleOpenEdit={handleOpenEdit} movie={movies[0]} />
           <SearchOptions
             handleSorted={handleSorted}
             categories={categories}
@@ -151,11 +149,11 @@ export default function App() {
             <MoviesList handleOpenEdit={handleOpenEdit} movies={moviesSorted} />
           </ErrorBoundary>
           <Footer />
-          <AddMovieModal open={open} handleClose={handleClose} />
-          <EditMovieModal
-            openEdit={movieSelected !== undefined}
-            handleCloseEdit={handleCloseEdit}
+          <MovieModal
+            open={movieSelected !== undefined}
+            handleClose={handleCloseEdit}
             movie={movieSelected}
+            mode={mode}
           />
           <CongratulationsModal />
           <LoginModal />

@@ -12,7 +12,7 @@ export default function MovieCard({ movie, handleOpenEdit }) {
   const { title, description, director, image } = movie;
 
   const handleEdit = () => {
-    handleOpenEdit(movie);
+    handleOpenEdit(movie, "EDIT");
   };
 
   return (
