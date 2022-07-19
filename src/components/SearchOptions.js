@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { PropTypes } from "prop-types";
 
-const SearchOptions = ({ handleSorted }) => {
+const SearchOptions = ({ handleSorted, categories, category, setCategory }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -32,7 +32,12 @@ const SearchOptions = ({ handleSorted }) => {
         </Grid>
         <Grid item xs={3} />
         <Grid item xs={3}>
-          <BasicSelect handleSorted={handleSorted} />
+          <BasicSelect
+            handleSorted={handleSorted}
+            categories={categories}
+            category={category}
+            setCategory={setCategory}
+          />
         </Grid>
       </Grid>
       <Grid container spacing={2}>
@@ -50,4 +55,7 @@ export default SearchOptions;
 
 SearchOptions.propTypes = {
   handleSorted: PropTypes.func.isRequired,
+  categories: PropTypes.arrayOf(PropTypes.string),
+  category: PropTypes.string,
+  setCategory: PropTypes.func.isRequired,
 };

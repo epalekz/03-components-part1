@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Header from "./components/Header";
@@ -102,20 +102,22 @@ const movies = [
   },
 ];
 
+const categories = ["title", "director", "description"];
+
 export default function App() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [openEdit, setOpenEdit] = React.useState(false);
   const handleOpenEdit = (movie) => {
     setMovieSelected(movie);
-    setOpenEdit(true);
   };
-  const handleCloseEdit = () => setOpenEdit(false);
+  const handleCloseEdit = () => setMovieSelected(undefined);
 
-  const [movieSelected, setMovieSelected] = React.useState({});
+  const [movieSelected, setMovieSelected] = React.useState(undefined);
   const [moviesSorted, setMoviesSorted] = React.useState([...movies]);
+
+  const [category, setCategory] = useState("title");
 
   const handleSorted = (field) => {
     let moviesS = [];
@@ -139,14 +141,19 @@ export default function App() {
       <Container fixed>
         <Box sx={{ my: 4 }}>
           <Header handleOpen={handleOpen} />
-          <SearchOptions handleSorted={handleSorted} />
+          <SearchOptions
+            handleSorted={handleSorted}
+            categories={categories}
+            category={category}
+            setCategory={setCategory}
+          />
           <ErrorBoundary>
             <MoviesList handleOpenEdit={handleOpenEdit} movies={moviesSorted} />
           </ErrorBoundary>
           <Footer />
           <AddMovieModal open={open} handleClose={handleClose} />
           <EditMovieModal
-            openEdit={openEdit}
+            openEdit={movieSelected !== undefined}
             handleCloseEdit={handleCloseEdit}
             movie={movieSelected}
           />
