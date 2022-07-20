@@ -8,7 +8,14 @@ import Select from "@mui/material/Select";
 import { PropTypes } from "prop-types";
 import { setSortBy } from "../actions/movieActions";
 
-const categories = ["title", "tagline", "overview"];
+const categories = [
+  "title",
+  "tagline",
+  "overview",
+  "vote_average",
+  "vote_count",
+  "release_date",
+];
 
 export default function BasicSelect({ handleSorted }) {
   const [category, setCategory] = useState("title");

@@ -16,13 +16,6 @@ import LoginModal from "./components/LoginModal";
 import ErrorBoundary from "./components/ErrorBoundary";
 import DeleteMovieModal from "./components/DeleteMovieModal";
 import MovieDetails from "./components/MovieDetails";
-// import {
-//   readAllAction,
-//   noAction,
-//   createAction,
-//   updateAction,
-//   deleteAction,
-// } from "../actions/movieActions";
 import { readAllAction, noAction } from "./actions/movieActions";
 
 const darkTheme = createTheme({
@@ -33,7 +26,7 @@ const darkTheme = createTheme({
 
 export default function App() {
   const state = useSelector((state) => state);
-  const { data, sortBy, sortOrder } = state.movie;
+  const { data, sortBy, filter } = state.movie;
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -64,7 +57,9 @@ export default function App() {
   const [movieSelected, setMovieSelected] = useState({});
 
   const handleSorted = (field) => {
-    setUrl(`http://localhost:4000/movies?sortBy=${sortBy}&sortOrder="asc"`);
+    setUrl(
+      `http://localhost:4000/movies?sortBy=${sortBy}&sortOrder="asc"&filter=${filter}`
+    );
   };
 
   return (

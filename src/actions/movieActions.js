@@ -5,6 +5,7 @@ import {
   READ_ALL_DATA,
   UPDATE_DATA,
   SET_SORTBY,
+  SET_FILTER,
 } from "../types";
 
 export const createAction = (data) => ({ type: CREATE_DATA, payload: data });
@@ -13,3 +14,4 @@ export const updateAction = (data) => ({ type: UPDATE_DATA, payload: data });
 export const deleteAction = (id) => ({ type: DELETE_DATA, payload: id });
 export const noAction = () => ({ type: NO_DATA });
 export const setSortBy = (sortBy) => ({ type: SET_SORTBY, payload: sortBy });
+export const setFilter = (filter) => ({ type: SET_FILTER, payload: filter });

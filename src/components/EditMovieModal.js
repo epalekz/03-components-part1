@@ -14,7 +14,7 @@ const selectData = {
 };
 
 export default function EditMovieModal({ openEdit, handleCloseEdit, movie }) {
-  const { title, description, image } = movie;
+  const { title, overview, poster_path } = movie;
 
   return (
     <div>
@@ -58,7 +58,7 @@ export default function EditMovieModal({ openEdit, handleCloseEdit, movie }) {
                   label="Movie URL"
                   placeholder="Movie URL"
                   fullWidth
-                  value={image}
+                  value={poster_path}
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -87,7 +87,7 @@ export default function EditMovieModal({ openEdit, handleCloseEdit, movie }) {
                   multiline
                   rows={4}
                   fullWidth
-                  value={description}
+                  value={overview}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -129,9 +129,9 @@ export default function EditMovieModal({ openEdit, handleCloseEdit, movie }) {
 
 EditMovieModal.defaultProps = {
   movie: {
-    title: "some movie",
-    description: "some description",
-    director: "some director",
+    title: "",
+    overview: "",
+    director: "",
     image: "",
   },
 };

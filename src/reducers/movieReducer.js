@@ -5,11 +5,13 @@ import {
   READ_ALL_DATA,
   UPDATE_DATA,
   SET_SORTBY,
+  SET_FILTER,
 } from "../types";
 
 export const initialState = {
   data: [],
   sortBy: "",
+  filter: "",
 };
 
 export function movieReducer(state = initialState, action) {
@@ -46,6 +48,12 @@ export function movieReducer(state = initialState, action) {
       return {
         ...state,
         sortBy: action.payload,
+      };
+    }
+    case SET_FILTER: {
+      return {
+        ...state,
+        filter: action.payload,
       };
     }
     case NO_DATA:

@@ -9,7 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 
 const MovieDetails = ({ movie, setShowMovieDetail, showMovieDetail }) => {
-  const { title, description, image } = movie || {};
+  const { title, overview, poster_path } = movie || {};
 
   return (
     <Card
@@ -53,7 +53,7 @@ const MovieDetails = ({ movie, setShowMovieDetail, showMovieDetail }) => {
           <CardMedia
             component="img"
             sx={{ width: 151 }}
-            image={image}
+            image={poster_path}
             alt="Live from space album cover"
           />
           <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -73,7 +73,7 @@ const MovieDetails = ({ movie, setShowMovieDetail, showMovieDetail }) => {
                 color="text.secondary"
                 component="p"
               >
-                {description}
+                {overview}
               </Typography>
             </CardContent>
           </Box>
@@ -95,8 +95,6 @@ MovieDetails.defaultProps = {
 };
 
 MovieDetails.propTypes = {
-  // openEdit: PropTypes.bool.isRequired,
-  // handleCloseEdit: PropTypes.func.isRequired,
   movie: PropTypes.object,
   setShowMovieDetail: PropTypes.func.isRequired,
   showMovieDetail: PropTypes.bool.isRequired,

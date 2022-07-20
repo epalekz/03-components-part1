@@ -4,4 +4,4 @@ export const UPDATE_DATA = "UPDATE_DATA";
 export const DELETE_DATA = "DELETE_DATA";
 export const NO_DATA = "NO_DATA";
 export const SET_SORTBY = "SET_SORTBY";
-export const SET_SORTORDER = "SET_SORTORDER";
+export const SET_FILTER = "SET_FILTER";
