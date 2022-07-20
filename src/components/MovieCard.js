@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
 export default function MovieCard({ movie, handleOpenDetails }) {
-  const { title, description, director, image } = movie || {};
+  const { title, overview, tagline, poster_path } = movie || {};
 
   return (
     <Card
@@ -19,12 +19,12 @@ export default function MovieCard({ movie, handleOpenDetails }) {
       <CardHeader
         action={<IconButton aria-label="settings"></IconButton>}
         title={title}
-        subheader={director}
+        subheader={tagline}
       />
-      <CardMedia component="img" height="194" image={image} alt="Paella dish" />
+      <CardMedia component="img" height="194" image={poster_path} alt={title} />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          {description.substring(0, 100) + "..."}
+          {overview.substring(0, 100) + "..."}
         </Typography>
       </CardContent>
       <CardActions disableSpacing></CardActions>
@@ -35,18 +35,18 @@ export default function MovieCard({ movie, handleOpenDetails }) {
 MovieCard.defaultProps = {
   movie: {
     title: "",
-    description: "",
-    director: "",
-    image: "",
+    overview: "",
+    tagline: "",
+    poster_path: "",
   },
 };
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string,
-    description: PropTypes.string,
-    director: PropTypes.string,
-    image: PropTypes.string,
+    overview: PropTypes.string,
+    tagline: PropTypes.string,
+    poster_path: PropTypes.string,
   }),
   handleOpenDetails: PropTypes.func.isRequired,
 };
